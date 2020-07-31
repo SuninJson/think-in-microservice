@@ -1,5 +1,6 @@
 package com.order.service.controller;
 
+import com.order.service.fegin.UserFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -17,6 +18,9 @@ public class OrderController {
     @Autowired
     @LoadBalanced
     private RestTemplate loadBalancedRestTemplate;
+
+    @Autowired
+    private UserFeignClient userFeignClient;
 
     @Autowired
     private LoadBalancerClient loadBalancerClient;
@@ -43,6 +47,16 @@ public class OrderController {
         String user = loadBalancedRestTemplate.getForEntity(serviceUrl + "/user/" + userId, String.class).getBody();
         String order = getOrder(orderId);
         return String.format("用户%s,对商品%s进行了下单", user, order);
+    }
+
+    @GetMapping("/relatedUser/{orderId}")
+    public String getRelatedUser(@PathVariable("orderId") String orderId) {
+        Long userId = getUserByOrderId(orderId);
+        return userFeignClient.getUser(userId);
+    }
+
+    private Long getUserByOrderId(String orderId) {
+        return 1L;
     }
 
 
