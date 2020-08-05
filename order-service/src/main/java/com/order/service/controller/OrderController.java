@@ -46,7 +46,7 @@ public class OrderController {
         String serviceUrl = "http://user-service";
         String user = loadBalancedRestTemplate.getForEntity(serviceUrl + "/user/" + userId, String.class).getBody();
         String order = getOrder(orderId);
-        return String.format("用户%s,对商品%s进行了下单", user, order);
+        return String.format("用户[%s],取消了订单[%s]", user, order);
     }
 
     @GetMapping("/relatedUser/{orderId}")
