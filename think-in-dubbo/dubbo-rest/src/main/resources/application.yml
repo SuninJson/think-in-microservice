@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: dubbo-spring-boot-rest-provider
+
+server:
+  port: 8080
+
+dubbo:
+  application:
+    name: dubbo-rest-provider
+  registry:
+    address: zookeeper://localhost:2181
+  protocols:
+    dubbo:
+      name: dubbo
+      port: -1
+      server: netty
+    rest:
+      name: rest
+      port: 8888
+      server: jetty
