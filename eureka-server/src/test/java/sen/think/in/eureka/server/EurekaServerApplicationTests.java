@@ -1,10 +1,10 @@
-package sen.demo.dubbo.rest;
+package sen.think.in.eureka.server;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DubboRestApplicationTests {
+class EurekaServerApplicationTests {
 
     @Test
     void contextLoads() {

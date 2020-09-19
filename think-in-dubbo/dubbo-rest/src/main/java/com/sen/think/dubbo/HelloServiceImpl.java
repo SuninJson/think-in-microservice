@@ -1,4 +1,4 @@
-package sen.demo.dubbo.rest;
+package com.sen.think.dubbo;
 
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.config.annotation.Service;
